@@ -11,9 +11,16 @@ namespace CSExercises
         {
             //YOUR CODE HERE
             //Hint: you can use ExE4.IsPerfectNumber() method here
-
-
-
+            int count = 0;
+            for (int index = 1; index <= 1000; index++)
+            {
+                if (ExE4.IsPerfectNumber(index))
+                {
+                    count++;
+                    Console.Write("{0}\t", index);
+                }
+            }
+            //Console.WriteLine("Total Perfect Numbers: {0}", count);
         }
     }
 }

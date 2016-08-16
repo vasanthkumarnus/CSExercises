@@ -23,6 +23,15 @@ namespace CSExercises
         public static void Main(string[] args)
         {
             //YOUR CODE HERE
+            Console.WriteLine("{0}\t{1}\t{2}\t{3}", "NO", "INVERSE", "SQUARE ROOT", "SQUARE");
+            Console.WriteLine(new String('-',40));
+            for(double index = 1; index <= 10; index++)
+            {
+                Console.Write("{0:0.0}\t",index);
+                Console.Write("{0:0.000}\t", 1/index);
+                Console.Write("{0:0.000}\t", Math.Sqrt(index));
+                Console.WriteLine("{0:0.000}", Math.Pow(index,2));
+            }
         }
     }
 }
