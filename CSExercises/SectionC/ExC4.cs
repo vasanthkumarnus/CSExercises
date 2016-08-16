@@ -23,17 +23,37 @@ namespace CSExercises
 
             //Your code here
 
-
-
+            Console.Write("Please enter the distance travelled: ");
+            string strDistance = Console.ReadLine();
+            if (ValidateDouble(strDistance))
+                Console.WriteLine("Fare: {0:C2}", CalculateFare(Convert.ToDouble(strDistance)));
+            else
+                Console.WriteLine("**Error**");
         }
 
         public static double CalculateFare(double distance)
         {
             //YOUR CODE HERE
-            return 0;
+            double totalFare = 0;
+            double minFare = 2.40;
+            double minDist = 0.5;
+            double firstSlabDist = 8.5;
+            double chargeAtFirstSlab = 0.04;
+            double chargeAtSecondSlab = 0.05;
+            double chargePer = 10;  // charge per indicates kms to meters and rate per meter. In this case (kms * 1000)/100
+            double secondSlabDist = minDist + firstSlabDist;
+            totalFare = minFare;
+            if (distance > minDist && distance <= (minDist + firstSlabDist))
+                totalFare += (Math.Ceiling((distance - minDist) * chargePer) * chargeAtFirstSlab);
+            else if (distance > minDist && distance > (minDist + firstSlabDist))
+                totalFare += (((firstSlabDist * chargePer) * chargeAtFirstSlab) + (Math.Ceiling((distance - secondSlabDist) * chargePer) * chargeAtSecondSlab));
+            return totalFare;
+        }
 
-
-
+        public static bool ValidateDouble(string strInput)
+        {
+            double doubleInput;
+            return double.TryParse(strInput, out doubleInput);
         }
     }
 }

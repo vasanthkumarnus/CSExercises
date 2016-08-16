@@ -19,12 +19,12 @@ namespace CSExercises
         public static void Main(string[] args)
         {
             Console.Write("Please enter your mark: ");
-            int mark = Convert.ToInt32(Console.ReadLine());
+            string strMarks = Console.ReadLine();
 
-            if (ValidateMarks(mark))
+            if (ValidateMarks(strMarks))
             {
-                string grade = CalculateGrade(mark);
-                Console.WriteLine("You scored {0} marks which is {1} grade.", mark, grade);
+                string grade = CalculateGrade(Convert.ToInt32(strMarks));
+                Console.WriteLine("You scored {0} marks which is {1} grade.", strMarks, grade);
             }
             else
                 Console.WriteLine("**Error**");
@@ -45,10 +45,11 @@ namespace CSExercises
             return grade;
         }
 
-        public static bool ValidateMarks(int mark)
+        public static bool ValidateMarks(string strMark)
         {
             bool result = true;
-            if (mark < 0 || mark > 100)
+            int mark;
+            if (!int.TryParse(strMark, out mark) || mark < 0 || mark > 100)
                 result = false;
             return result;
         }

@@ -30,18 +30,39 @@ namespace CSExercises
         public static void Main(string[] args)
         {
             //YOUR CODE HERE - get user input, call the function and return the discounted price
-
-
-
+            string tvQty, dvdQty, mp3Qty;
+            Console.Write("Enter the TV quantity: ");
+            tvQty = Console.ReadLine();
+            Console.Write("Enter the DVD quantity: ");
+            dvdQty = Console.ReadLine();
+            Console.Write("Enter the MP3 quantity: ");
+            mp3Qty = Console.ReadLine();
+            if (ValidateNumber(tvQty) && ValidateNumber(dvdQty) && ValidateNumber(mp3Qty))
+                Console.WriteLine(CalculateTotalPrice(Convert.ToInt32(tvQty), Convert.ToInt32(dvdQty), Convert.ToInt32(mp3Qty)));
+            else
+                Console.WriteLine("**Error**");
         }
 
         public static double CalculateTotalPrice(int tvQty, int dvdQty, int mp3Qty)
         {
             //YOUR CODE HERE
-            return 0;
+            double tvPrice = 900, dvdPrice = 500, mp3Price = 700;
+            double tempSum = ((tvQty * tvPrice) + (dvdQty * dvdPrice));
+            double totalSum = tempSum + (mp3Qty * mp3Price);
+            double discount10Amt = 5000;
+            double discount15Amt = 10000;
+            double totalPrice = totalSum;
+            if (totalSum > discount15Amt)
+                totalPrice = (tempSum * 0.85) + (mp3Qty * mp3Price);
+            else if (totalSum > discount10Amt)
+                totalPrice = (tempSum * 0.9) + (mp3Qty * mp3Price);
+            return totalPrice;
+        }
 
-
-
+        public static bool ValidateNumber(string strInput)
+        {
+            int doubleInput;
+            return int.TryParse(strInput, out doubleInput);
         }
     }
 }
