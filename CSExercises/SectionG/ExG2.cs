@@ -32,11 +32,22 @@ namespace CSExercises
         public static bool IsPalindrome(string phrase)
         {
             //YOUR CODE HERE
-            return false;
+            bool result = false;
 
+            string withoutEmptySpace = string.Empty;
+            for (int i = 0; i < phrase.Length; i++)
+            {
+                if (Char.IsLetterOrDigit(phrase[i]))
+                    withoutEmptySpace += phrase[i];
+            }
 
+            string reversePhrase = string.Empty;
+            for (int i = (withoutEmptySpace.Length - 1); i > -1; i--)
+                reversePhrase += withoutEmptySpace[i];
 
-
+            if (withoutEmptySpace.ToLower() == reversePhrase.ToLower())
+                result = true;
+            return result;
         }
     }
 }

@@ -32,17 +32,29 @@ namespace CSExercises
         public static int CountVowels(string phrase)
         {
             //YOUR CODE HERE
-            return 0;
-
-
+            int counter = 0;
+            string lowerPhrase = phrase.ToLower();
+            foreach (char ch in lowerPhrase.ToCharArray())
+            {
+                if (vowels.Any(vw => vw == ch))
+                    counter++;
+            }
+            return counter;
         }
 
         public static int[] CountIndividualVowels(string phrase)
         {
             int[] vowelCount = new int[5];
             //YOUR CODE HERE
-
-
+            string lowerPhrase = phrase.ToLower();
+            for (int i = 0; i < vowelCount.Length; i++)
+            {
+                foreach (char ch in lowerPhrase.ToCharArray())
+                {
+                    if (ch == vowels[i])
+                        vowelCount[i]++;
+                }
+            }
 
             return vowelCount;
         }

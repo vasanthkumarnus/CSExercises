@@ -22,9 +22,18 @@ namespace CSExercises
         public static string ToTitleCase(string phrase)
         {
             //YOUR CODE HERE
-            return null;
-
-
+            string[] words = phrase.Trim( ).Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            string titleCasePhrase = string.Empty;
+            for (int index = 0; index < words.Length; index++)
+            {
+                string titleWord = words[index];
+                string ch = titleWord[0].ToString().ToUpper();
+                if (titleWord.Length > 1)
+                    titleCasePhrase += String.Format("{0}{1} ", ch, titleWord.Substring(1, titleWord.Length - 1));
+                else
+                    titleCasePhrase += String.Format("{0} ", ch);
+            }
+            return titleCasePhrase;
         }
     }
 }
