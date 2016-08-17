@@ -26,7 +26,20 @@ namespace CSExercises
         {
             //YOUR CODE HERE
             //Sort the list
-
+            for (int i = 0; i < values.Length - 1; i++)
+            {
+                for (int j = i + 1; j < values.Length; j++)
+                {
+                    if (values[i].CompareTo(values[j]) < 0)
+                    {
+                        int temp = values[i];
+                        values[i] = values[j];
+                        values[j] = temp;
+                        ExG4.PrintMarks(values);
+                        Console.WriteLine(Environment.NewLine);
+                    }
+                }
+            }
         }
 
     }

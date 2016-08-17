@@ -26,7 +26,7 @@ namespace CSExercises
     {
         public static void Main(string[] args)
         {
-            int [,] marks = new int[,]
+            int[,] marks = new int[,]
             {
                 {56,84,68,29},
                 {94,73,31,96},
@@ -49,7 +49,7 @@ namespace CSExercises
 
             for (int row = 0; row < 12; row++)
             {
-                Console.WriteLine("Total marks for student {0}: {1}",row,total[row]);
+                Console.WriteLine("Total marks for student {0}: {1}", row, total[row]);
                 Console.WriteLine("Avg marks for student {0}: {1}", row, avg[row]);
             }
 
@@ -64,11 +64,17 @@ namespace CSExercises
         {
 
             int[] total = new int[12];
-
             //YOUR CODE HERE
+            for (int id = 0; id < marks.GetLength(0); id++)
+            {
+                int totalMarks = 0;
+                for (int sub = 0; sub < marks.GetLength(1); sub++)
+                {
+                    totalMarks += marks[id, sub];
+                }
+                total[id] = totalMarks;
+            }
             return total;
-
-
         }
 
         public static double[] CalculateStudentAverage(int[,] marks)
@@ -76,10 +82,12 @@ namespace CSExercises
             double[] avg = new double[12];
 
             //YOUR CODE HERE
+            int[] totalMarks = CalculateTotalMarks(marks);
+            for (int id = 0; id < marks.GetLength(0); id++)
+            {
+                avg[id] = (double)totalMarks[id] / marks.GetLength(1);
+            }
             return avg;
-
-
-
         }
 
         public static double[] CalculateSubjectAverage(int[,] marks)
@@ -87,12 +95,17 @@ namespace CSExercises
             double[] avgPerSubject = new double[4];
 
             //YOUR CODE HERE
+            //YOUR CODE HERE
+            for (int sub = 0; sub < marks.GetLength(1); sub++)
+            {
+                int totalSubMarks = 0;
+                for (int id = 0; id < marks.GetLength(0); id++)
+                {
+                    totalSubMarks += marks[id, sub];
+                }
+                avgPerSubject[sub] = (double)totalSubMarks / marks.GetLength(0);
+            }
             return avgPerSubject;
-
-
-
-
-
         }
 
         public static double[] CalculateVariance(int[,] marks)

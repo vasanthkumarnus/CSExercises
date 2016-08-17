@@ -76,7 +76,7 @@ namespace CSExercises
         {
             for (int i = 0; i < marks.Length; i++)
             {
-                Console.WriteLine(marks[i]);
+                Console.Write(marks[i] + " ");
             }
         }
 
